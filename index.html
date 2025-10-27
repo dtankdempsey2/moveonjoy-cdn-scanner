@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoveOnJoy CDN Scanner</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f8f9fa;
+      color: #212529;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #111;
+      font-size: 2em;
+    }
+    code {
+      background: #e9ecef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #e9ecef;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ MoveOnJoy CDN Scanner</h1>
+
+  <p>
+    This tool scans across <strong>fl1 to fl100</strong> CDN nodes of the <code>moveonjoy.com</code> domain
+    to find the first working <code>.m3u8</code> stream URL and redirects your player to it automatically.
+  </p>
+
+	<h2>🌐 How to Use</h2>
+
+	<p>Call the endpoint with your stream URL:</p>
+	<pre><code id="example-scan-url">/api/scan?url=...</code></pre>
+
+	<h3>Optional Parameters</h3>
+	<ul>
+		<li><code>min=</code> — start of the scan range (default: <code>1</code>)</li>
+		<li><code>max=</code> — end of the scan range (default: <code>100</code>, max: <code>500</code>)</li>
+	</ul>
+
+	<p>Example with a custom range:</p>
+	<pre><code id="example-scan-range">/api/scan?url=...&amp;min=10&amp;max=50</code></pre>
+
+  <h2>🔒 Restrictions</h2>
+  <ul>
+    <li>Only URLs from <code>moveonjoy.com</code> are allowed</li>
+    <li>If no working CDN is found, you'll receive a <code>404</code> response</li>
+  </ul>
+
+  <h2>📦 Deployment</h2>
+  <p>This API runs on <strong>Vercel</strong> using parallel requests with <code>Promise.any()</code> for fast redirects.</p>
+
+  <hr>
+  <p style="font-size: 0.9em; color: #555;">&copy; 2025 MoveOnJoy CDN Utility</p>
+	<script>
+		window.addEventListener("DOMContentLoaded", () => {
+			const baseUrl = window.location.origin;
+			const defaultUrl = "https://fl41.moveonjoy.com/ACC_NETWORK/index.m3u8";
+
+			const scanUrl = `${baseUrl}/api/scan?url=${defaultUrl}`;
+			const scanRangeUrl = `${scanUrl}&min=10&max=50`;
+
+			document.getElementById("example-scan-url").textContent = scanUrl;
+			document.getElementById("example-scan-range").textContent = scanRangeUrl;
+		});
+	</script>
+
+</body>
+</html>
