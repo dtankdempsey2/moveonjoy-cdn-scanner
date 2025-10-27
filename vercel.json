@@ -4,12 +4,20 @@
     {
       "src": "api/scan.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/scan",
       "dest": "api/scan.js"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ]
 }
