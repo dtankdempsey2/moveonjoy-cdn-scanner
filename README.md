@@ -74,7 +74,7 @@ If none are available, it returns a `404`.
 
 1. Validates `url` to ensure it's from `moveonjoy.com`
 2. Iterates through CDN node numbers between `min` and `max`
-3. Builds test URLs and performs parallel `HEAD` requests
+3. Builds test URLs and performs parallel `GET` requests
 4. Returns a **302 Redirect** to the first successful `.m3u8`
 5. Returns **404** if all nodes fail
 
