@@ -14,6 +14,18 @@ Click below to deploy your own instance on **Vercel** in one click:
 
 ---
 
+### 🌐 Hosted Version
+
+The live, Vercel-hosted version of this scanner is available at:
+
+> **[https://moveonjoy-scan.vercel.app/](https://moveonjoy-scan.vercel.app/)**  
+
+You can use it directly by calling:
+
+> https://moveonjoy-scan.vercel.app/api/scan?url=YOUR_M3U8_URL
+
+---
+
 ## 🌐 How It Works
 
 The `/api/scan` endpoint checks multiple CDN nodes (e.g. `fl1.moveonjoy.com`, `fl2.moveonjoy.com`, …) for the same path and redirects to the first valid `.m3u8` response.
